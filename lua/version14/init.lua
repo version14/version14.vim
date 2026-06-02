@@ -21,6 +21,7 @@ function M.load(opts)
     style = "dark"
   end
 
+  vim.opt.termguicolors = true
   vim.cmd("hi clear")
   if vim.fn.exists("syntax_on") == 1 then
     vim.cmd("syntax reset")

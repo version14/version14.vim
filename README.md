@@ -1,14 +1,15 @@
 # version14.nvim
 
-A Neovim colorscheme ported from the [version14 Zed theme](../zed-theme), featuring a dark and light variant built around a lime accent (`#D2FF3A`).
+A Neovim colorscheme ported from the [version14 Zed theme](../zed-theme), featuring dark and light variants built around a lime accent (`#D2FF3A`).
 
 ## Requirements
 
 - Neovim 0.8+
+- A terminal with true color support (`TERM=xterm-256color` or similar)
 
 ## Installation
 
-Using [lazy.nvim](https://github.com/folke/lazy.nvim):
+### lazy.nvim (standalone)
 
 ```lua
 {
@@ -20,29 +21,69 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 }
 ```
 
+### LazyVim
+
+Add a file `~/.config/nvim/lua/plugins/colorscheme.lua`:
+
+```lua
+return {
+  {
+    "mathieusouflis/version14.nvim",
+    priority = 1000,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "version14",
+    },
+  },
+}
+```
+
+Then remove or disable any other colorscheme plugin (e.g. tokyonight) from your config.
+
 ## Usage
 
 ```lua
 -- Dark variant (default)
 vim.cmd("colorscheme version14")
 
--- Light variant
+-- Light variant via setup (call before colorscheme)
 require("version14").setup({ style = "light" })
 vim.cmd("colorscheme version14")
 
--- Or via global variable
+-- Light variant via global variable
 vim.g.version14_style = "light"
 vim.cmd("colorscheme version14")
 ```
+
+## Plugin support
+
+| Plugin | Notes |
+|--------|-------|
+| nvim-treesitter | Full |
+| LSP + diagnostics | Full |
+| gitsigns.nvim | Full |
+| telescope.nvim | Full |
+| indent-blankline.nvim | v2 and v3 |
+| snacks.nvim | Dashboard, notifier, picker, indent, input |
+| mini.nvim | Statusline, tabline, indentscope, icons, clue |
+| which-key.nvim | Full |
+| flash.nvim | Full |
+| blink.cmp | Full (all kind icons) |
+| noice.nvim | Full |
+| trouble.nvim | Full |
+| todo-comments.nvim | Full |
+| neo-tree.nvim | Full |
 
 ## Structure
 
 ```
 ├── colors/
-│   └── version14.lua       -- Entry point (calls require("version14").load())
+│   └── version14.lua       -- Entry point
 └── lua/version14/
-    ├── init.lua            -- setup() and load() functions
-    ├── palette.lua         -- Color definitions for dark and light variants
+    ├── init.lua            -- setup() / load()
+    ├── palette.lua         -- Color definitions for dark / light
     └── highlights.lua      -- Highlight group mappings
 ```
 
