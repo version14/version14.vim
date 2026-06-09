@@ -17,7 +17,7 @@ function M.load(opts)
 
   -- vim.g.version14_style takes precedence over M.options.style
   local style = vim.g.version14_style or M.options.style or "dark"
-  if style ~= "dark" and style ~= "light" then
+  if style ~= "dark" and style ~= "black" and style ~= "light" then
     style = "dark"
   end
 

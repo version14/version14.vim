@@ -1,7 +1,7 @@
 local M = {}
 
 -- All blended values are pre-computed: color@alpha blended onto the editor bg.
--- Dark editor bg: #14171B, Light editor bg: #E8EAED
+-- Dark editor bg: #14171B, Black editor bg: #000000, Light editor bg: #E8EAED
 
 M.dark = {
   -- Backgrounds (darkest → lightest)
@@ -36,6 +36,45 @@ M.dark = {
   diff_add    = "#1E3128",  -- 4ADE80 @ 13%
   diff_change = "#1D2B3A",  -- 6FB1FF @ 13%
   diff_delete = "#341F20",  -- FF5C5C @ 13%
+
+  git_add     = "#4ADE80",
+  git_change  = "#6FB1FF",
+  git_delete  = "#FF5C5C",
+}
+
+M.black = {
+  -- Backgrounds (fully dark)
+  bg_dark  = "#000000",  -- status/title bar
+  bg       = "#000000",  -- editor
+  bg0      = "#080808",  -- panel / float
+  bg1      = "#0D0D0D",  -- main window (non-editor)
+  bg2      = "#181818",  -- element hover / border
+  bg3      = "#222222",  -- element active / border variant
+  bg4      = "#505560",  -- disabled
+
+  -- Foregrounds (identical to dark)
+  fg       = "#F2F4F6",
+  fg1      = "#9CA0A6",
+  fg2      = "#6E737A",
+  fg3      = "#505560",
+
+  -- Accent colors (identical to dark)
+  accent   = "#D2FF3A",
+  accent2  = "#B8E625",
+  blue     = "#6FB1FF",
+  green    = "#4ADE80",
+  yellow   = "#FFB347",
+  red      = "#FF5C5C",
+
+  -- Pre-blended composite colors (alpha blended onto bg = #000000)
+  selection   = "#212909",  -- D2FF3A @ 16%
+  active_line = "#070707",  -- F2F4F6 @ 3%
+  bracket_bg  = "#131705",  -- D2FF3A @ 9%
+  read_bg     = "#141415",  -- 9CA0A6 @ 12.5%
+  write_bg    = "#1E1F20",  -- 9CA0A6 @ 19%
+  diff_add    = "#0A1D11",  -- 4ADE80 @ 13%
+  diff_change = "#0F1721",  -- 6FB1FF @ 13%
+  diff_delete = "#210C0C",  -- FF5C5C @ 13%
 
   git_add     = "#4ADE80",
   git_change  = "#6FB1FF",
