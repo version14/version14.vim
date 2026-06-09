@@ -1,6 +1,6 @@
 # version14
 
-A colorscheme for Neovim and Vim 8+, ported from the [version14 Zed theme](../zed-theme). Dark and light variants built around a lime accent (`#D2FF3A`).
+A colorscheme for Neovim and Vim 8+, ported from the [version14 Zed theme](../zed-theme). Dark, black, and light variants built around a lime accent (`#D2FF3A`).
 
 ## Requirements
 
@@ -17,7 +17,7 @@ Both require a terminal with true color support (`termguicolors`).
 
 ```lua
 {
-  "mathieusouflis/version14.nvim",
+  "version14/version14.vim",
   priority = 1000,
   config = function()
     vim.cmd("colorscheme version14")
@@ -31,7 +31,7 @@ Add `~/.config/nvim/lua/plugins/colorscheme.lua`:
 
 ```lua
 return {
-  { "mathieusouflis/version14.nvim", priority = 1000 },
+  { "version14/version14.vim", priority = 1000 },
   { "LazyVim/LazyVim", opts = { colorscheme = "version14" } },
 }
 ```
@@ -39,7 +39,7 @@ return {
 ### Vim — vim-plug
 
 ```vim
-Plug 'mathieusouflis/version14.nvim'
+Plug 'version14/version14.vim'
 ```
 
 ### Vim — manual
@@ -54,12 +54,16 @@ Copy `colors/version14.vim` to `~/.vim/colors/version14.vim`.
 -- Dark variant (default)
 vim.cmd("colorscheme version14")
 
+-- Black variant (pure black, ideal for OLED)
+require("version14").setup({ style = "black" })
+vim.cmd("colorscheme version14")
+
 -- Light variant via setup (call before colorscheme)
 require("version14").setup({ style = "light" })
 vim.cmd("colorscheme version14")
 
--- Light variant via global variable
-vim.g.version14_style = "light"
+-- Via global variable (dark / black / light)
+vim.g.version14_style = "black"
 vim.cmd("colorscheme version14")
 ```
 
@@ -69,7 +73,11 @@ vim.cmd("colorscheme version14")
 " Dark variant (default)
 colorscheme version14
 
-" Light variant via global variable (set before colorscheme)
+" Black variant (set before colorscheme)
+let g:version14_style = 'black'
+colorscheme version14
+
+" Light variant (set before colorscheme)
 let g:version14_style = 'light'
 colorscheme version14
 ```
@@ -114,17 +122,17 @@ colors/
   version14.vim       Vim 8+ entry point (VimScript) + Neovim <0.8 fallback
 lua/version14/
   init.lua            setup() / load()
-  palette.lua         Color definitions for dark / light
+  palette.lua         Color definitions for dark / black / light
   highlights.lua      Highlight group mappings (Neovim)
 ```
 
 ## Palette
 
-| Role | Dark | Light |
-|------|------|-------|
-| Background | `#14171B` | `#E8EAED` |
-| Accent (lime) | `#D2FF3A` | `#4E6600` |
-| Blue | `#6FB1FF` | `#1B4FCC` |
-| Green | `#4ADE80` | `#166534` |
-| Yellow | `#FFB347` | `#92400E` |
-| Red | `#FF5C5C` | `#B91C1C` |
+| Role | Dark | Black | Light |
+|------|------|-------|-------|
+| Background | `#14171B` | `#000000` | `#E8EAED` |
+| Accent (lime) | `#D2FF3A` | `#D2FF3A` | `#4E6600` |
+| Blue | `#6FB1FF` | `#6FB1FF` | `#1B4FCC` |
+| Green | `#4ADE80` | `#4ADE80` | `#166534` |
+| Yellow | `#FFB347` | `#FFB347` | `#92400E` |
+| Red | `#FF5C5C` | `#FF5C5C` | `#B91C1C` |
